@@ -1,0 +1,9 @@
+.footer-container {
+  background-color: var(--third-bkg-color);
+  padding: 20px 30px;
+}
+
+.footer__text {
+  @include font(16px, 500, 20px, 0.01em);
+  color: var(--main-bkg-color);
+}
