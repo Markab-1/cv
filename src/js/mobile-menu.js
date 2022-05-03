@@ -9,10 +9,15 @@
     openMenuBtn.setAttribute('aria-expanded', !isMenuOpen);
     mobileMenu.classList.toggle('is-open');
 
-    const scrollLockMethod = !isMenuOpen
-      ? 'disableBodyScroll'
-      : 'enableBodyScroll';
-    bodyScrollLock[scrollLockMethod](document.body);
+  if (document.body.classList.contains('disabled-scroll')) {
+    document.body.classList.remove('disabled-scroll');
+    return;
+  }
+
+  if (!document.body.classList.contains('disabled-scroll')) {
+    document.body.classList.add('disabled-scroll');
+    return;
+  }
   };
 
   openMenuBtn.addEventListener('click', toggleMenu);
@@ -24,6 +29,5 @@
     if (!e.matches) return;
     mobileMenu.classList.remove('is-open');
     openMenuBtn.setAttribute('aria-expanded', false);
-    bodyScrollLock.enableBodyScroll(document.body);
   });
 
